@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import app from '../../utilities/firebase.config';
 
 const Login = () => {
 
 
-    const { signIn, handleGoogleSignIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle, } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     console.log('login page location', location)
@@ -28,6 +30,35 @@ const Login = () => {
                 console.log(error);
             })
     }
+
+    const auth = getAuth(app);
+    const googleProvider = new GoogleAuthProvider;
+    const gitHubProvider = new GithubAuthProvider;
+
+    const handleGoogleSignIn = () => {
+                signInWithPopup(auth, googleProvider)
+                .then(result => {
+                    const googleUser = result.user;
+                    console.log(googleUser);
+                    navigate(from, { replace: true })
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            }
+
+    const handleGitHubSignIn = () => {
+        signInWithPopup(auth, gitHubProvider)
+        .then(result => {
+            const githubUser = result.user;
+            console.log(githubUser);
+            navigate(from, { replace: true })
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }    
+      
 
 
     return (
@@ -63,9 +94,14 @@ const Login = () => {
                         </Link>
                     </p>
                     <div>
-                        <div className='flex gap-4 text-center'>
-                            <button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Google</button>        
-                            <button className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Github</button>        
+                        <div className='flex gap-4'>
+                            <div><button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Google</button>
+                            </div>
+                            <div>
+                                <button onClick={handleGitHubSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Github</button>
+                            </div>
+                                    
+                                    
                         </div>
                     
                     </div>

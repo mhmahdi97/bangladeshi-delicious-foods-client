@@ -24,29 +24,7 @@ const AuthContextProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const googleProvider = new GoogleAuthProvider;
-    const gitHubProvider = new GithubAuthProvider;
-
-    const handleGoogleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-        .then(result => {
-            const googleUser = result.user;
-            console.log(googleUser);
-        })
-        .catch(error => {
-            console.log(error)
-        })
     
-        const gitHubSignIn = () => {
-        signInWithPopup(auth, gitHubProvider)
-        .then(result => {
-            const githubUser = result.user;
-            console.log(githubUser);
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
     
     const logOut = () => {
         setLoading(true);
@@ -72,7 +50,6 @@ const AuthContextProvider = ({children}) => {
         loading,
         createUser,
         signIn,
-        handleGoogleSignIn,
         logOut
     }
 
