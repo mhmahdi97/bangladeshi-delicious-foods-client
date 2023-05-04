@@ -35,7 +35,7 @@ const Header = () => {
                     <li><a>Item 3</a></li>
                 </ul>
                 </div>
-                <Link to={'/'} className="text-3xl font-bold">Bangladeshi Delicious Foos</Link>
+                <Link to={'/'} className="text-3xl font-bold text-teal-800">Bangladeshi Delicious Foods</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal text-yellow-600 text-2xl font-medium px-1">

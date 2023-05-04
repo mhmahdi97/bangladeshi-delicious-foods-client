@@ -6,7 +6,7 @@ import Footer from '../Components/Shared/Footer/Footer';
 const Main = () => {
     const navigation = useNavigation();
     return (
-        <div>
+        <div className='container mx-auto'>
             <Header></Header>
             <div>{navigation.state === 'loading' && 'Loading...'}</div>
             <Outlet></Outlet>
