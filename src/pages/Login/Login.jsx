@@ -1,9 +1,11 @@
+// import all modules
 import React, { useContext } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import app from '../../utilities/firebase.config';
 
+// main component
 const Login = () => {
 
 
@@ -59,13 +61,11 @@ const Login = () => {
         })
     }    
       
-
-
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold">Login to Your Food Account!</h1>
+                    <h1 className="text-5xl font-bold text-teal-800">Login to Your Food Account!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handleLogin} className="card-body">
@@ -94,13 +94,10 @@ const Login = () => {
                         </Link>
                     </p>
                     <div>
-                        <div className='flex gap-4'>
-                            <div><button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Google</button>
-                            </div>
-                            <div>
-                                <button onClick={handleGitHubSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-3 rounded-md text-white font-semibold text-center">Sign in With Github</button>
-                            </div>
-                                    
+                        <div className='flex justify-center mb-3'>
+                            <div><button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-2 mr-3 rounded-md text-white font-semibold text-center">Sign in With Google</button>
+                            <button onClick={handleGitHubSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-2 rounded-md text-white font-semibold text-center">Sign in With Github</button>
+                            </div>  
                                     
                         </div>
                     
