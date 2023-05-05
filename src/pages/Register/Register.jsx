@@ -22,7 +22,7 @@ const Register = () => {
         setError('');
 
         if(password.length < 6){
-            setError('Password must contain 6 characters or longer')
+            setError('Password Must Contain 6 Characters or Longer')
             return
         }
 
@@ -31,6 +31,7 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                toast.success('Registration Completed Successfully!')
                 navigate('/')
 
                 
@@ -39,14 +40,13 @@ const Register = () => {
                 console.log(error);
                 setError(error.message);
             })
-            toast.success('Registration Completed Successfully!')
     }
 
 
     return (
+        <>
+        <Toaster position="top-center" reverseOrder={false} />
         <div className="hero min-h-screen bg-stone-100">
-             // toaster
-            <Toaster position="top-center" reverseOrder={false} />
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-3xl font-bold text-teal-800">Please Register to See Our Delicious Foods!</h1>
@@ -96,6 +96,7 @@ const Register = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
