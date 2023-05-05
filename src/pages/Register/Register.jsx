@@ -1,12 +1,15 @@
+// import all modules
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
-
+    // all hooks
     const { createUser } = useContext(AuthContext);
     const [error, setError] = useState('');
-
+    const navigate = useNavigate();
+    
+    // register event handler
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
@@ -27,13 +30,15 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                <div className="toast toast-center toast-middle">
-                    <div className="alert alert-success">
-                        <div>
-                        <span>Rigistration Completed Successfully.</span>
-                        </div>
-                    </div>
-                </div>
+                // <div className="toast toast-center toast-middle">
+                //     <div className="alert alert-success">
+                //         <div>
+                //         <span>Rigistration Completed Successfully.</span>
+                //         </div>
+                //     </div>
+                // </div>
+                navigate('/')
+                
             })
             .catch(error => {
                 console.log(error);
