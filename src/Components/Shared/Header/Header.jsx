@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../routes/providers/AuthContextProvider';
 
 const Header = () => {
@@ -39,8 +39,8 @@ const Header = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal text-yellow-600 text-2xl font-medium px-1">
-                <li> <Link to={'/'}>Home</Link> </li>
-                <li> <Link to={'/blogs'}>Blogs</Link> </li>
+                <li> <NavLink to={'/'}>Home</NavLink> </li>
+                <li> <NavLink to={'/blogs'}>Blogs</NavLink> </li>
                 <Link to={'/login'} className=" bg-teal-600  hover:bg-teal-700 px-4 py-2 rounded-lg text-white font-medium text-center my-auto ml-10 border-0">Login</Link>
                 </ul>
             </div>

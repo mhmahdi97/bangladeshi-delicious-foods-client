@@ -3,10 +3,11 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     // all hooks
-    const { createUser } = useContext(AuthContext);
+    const { createUser, auth } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     
@@ -40,6 +41,16 @@ const Register = () => {
             if (!error) {
                 toast.success('Registration Completed Successfully!')
             }
+        
+            updateProfile(auth.currentUser, {
+                displayName: {name} , photoURL: {phto}
+            })
+            .then(() => {
+
+            })
+            .catch((error) => {
+                console.log(error.message)
+            })
     }
 
 
