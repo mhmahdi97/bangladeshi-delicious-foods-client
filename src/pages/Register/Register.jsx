@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
 import { Link, useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     // all hooks
@@ -30,25 +31,22 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                // <div className="toast toast-center toast-middle">
-                //     <div className="alert alert-success">
-                //         <div>
-                //         <span>Rigistration Completed Successfully.</span>
-                //         </div>
-                //     </div>
-                // </div>
                 navigate('/')
+
                 
             })
             .catch(error => {
                 console.log(error);
                 setError(error.message);
             })
+            toast.success('Registration Completed Successfully!')
     }
 
 
     return (
         <div className="hero min-h-screen bg-stone-100">
+             // toaster
+            <Toaster position="top-center" reverseOrder={false} />
             <div className="hero-content flex-col">
                 <div className="text-center">
                     <h1 className="text-3xl font-bold text-teal-800">Please Register to See Our Delicious Foods!</h1>
