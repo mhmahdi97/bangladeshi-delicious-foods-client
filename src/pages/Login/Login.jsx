@@ -11,7 +11,7 @@ const Login = () => {
     const [error, setError] = useState('');
 
 
-    const { signIn, } = useContext(AuthContext);
+    const { auth, signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     console.log('login page location', location)
@@ -22,7 +22,7 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        
 
         signIn(email, password)
             .then(result => {
@@ -36,7 +36,7 @@ const Login = () => {
             })
     }
 
-    const auth = getAuth(app);
+    // const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider;
     const gitHubProvider = new GithubAuthProvider;
 
@@ -85,7 +85,7 @@ const Login = () => {
                             <input type="password" name='password' placeholder="Enter Your Password" className="input input-bordered" required />
                             <label className="label">
                                 <p className='text-red-500 text-lg'>{error}</p> 
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <a href="#" className="label-text-alt link link-hover text-blue-600">Forgot password?</a>
                                 
                             </label>
                         </div>
@@ -95,14 +95,13 @@ const Login = () => {
                     </form>
     
                     <p className='mb-4 ml-8'>
-                        <Link to="/register" className="label-text-alt link link-hover">
-                            Dont Have Account? Please Register
-                        </Link>
+                        Dont Have Account? Please <Link to="/register" className=" text-blue-600">Register</Link>
                     </p>
                     <div>
                         <div className='flex justify-center mb-3'>
-                            <div><button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-4 py-2 mr-3 rounded-md text-white font-semibold text-center">Google Sign-In <span className='ml-2'><FaGoogle /></span> </button>
-                            <button onClick={handleGitHubSignIn} className=" bg-stone-500 hover:bg-stone-600 px-2 py-2 rounded-md text-white font-semibold text-center"> <span className='mr-2'>Github Sign-In</span> <FaGithub /> </button>
+                            <div>
+                                <button onClick={handleGoogleSignIn} className=" bg-stone-500 hover:bg-stone-600 px-4 py-2 mr-3 rounded-md text-white font-semibold text-center">Sign-In with Google <FaGoogle /> </button>
+                                <button onClick={handleGitHubSignIn} className=" bg-stone-500 hover:bg-stone-600 px-4 py-2 rounded-md text-white font-semibold text-center">Sign-In with Github  <FaGithub /> </button>
                             </div>  
                                     
                         </div>
