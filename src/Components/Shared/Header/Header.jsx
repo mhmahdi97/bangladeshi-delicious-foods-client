@@ -41,11 +41,11 @@ const Header = () => {
                 <ul className="menu menu-horizontal text-yellow-600 text-2xl font-medium px-1">
                 <li> <NavLink to={'/'}>Home</NavLink> </li>
                 <li> <NavLink to={'/blogs'}>Blogs</NavLink> </li>
-                <Link to={'/login'} className=" bg-teal-600  hover:bg-teal-700 px-4 py-2 rounded-lg text-white font-medium text-center my-auto ml-10 border-0">Login</Link>
+                <Link onClick={handleLogOut} className=" bg-teal-600  hover:bg-teal-700 px-4 py-2 rounded-lg text-white font-medium text-center my-auto ml-10 border-0">Logout</Link>
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Login</a>
+                {/* <a className="btn">Logout</a> */}
             </div>
 </div>
     );
