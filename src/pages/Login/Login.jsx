@@ -3,7 +3,6 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../routes/providers/AuthContextProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-import app from '../../utilities/firebase.config';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 // main component
@@ -17,12 +16,14 @@ const Login = () => {
     console.log('login page location', location)
     const from = location.state?.from?.pathname || '/'
 
+
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        
+
+        setError('');
 
         signIn(email, password)
             .then(result => {
@@ -32,8 +33,25 @@ const Login = () => {
             })
             .catch(error => {
                 console.log(error);
-                setError(error.message);
+                setError(error.message)
+                // setError(error.message === 'auth/wrong-password' ? 'You Have Entered a Wrong Password' : error.message === 'auth/user-not-found' ? 'Account Not Found' : '');
+
+            //     if(error.message === 'auth/wrong-password') {
+            //     setError('You Have Entered a Wrong Password')
+            //     console.log(error)
+            // }
+            //     else if (error.message === 'auth/user-not-found') {
+            //         setError('Account Not Found')
+            //         console.log(error)
+            //     }
             })
+
+            console.log(error)
+
+            // if (error.message === 'auth/wrong-password') {
+            //     setError('You Have Entered a Wrong Password')
+            //     console.log(error)
+            // }
     }
 
     // const auth = getAuth(app);

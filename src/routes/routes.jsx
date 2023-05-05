@@ -3,6 +3,7 @@ import Home from "../pages/Home/Home";
 import Main from "../layouts/Main";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import ChefRecipes from "../pages/Home/ChefRecipes";
 
 
 
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/chefs/:id',
+                element:<ChefRecipes></ChefRecipes>,
+                loader: ({params}) => fetch(`https://the-news-dragon-server-jhankarphero.vercel.app/categories/${params.id}`)
             }
         ]
     }
