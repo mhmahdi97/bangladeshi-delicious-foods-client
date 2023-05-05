@@ -41,7 +41,7 @@ const Header = () => {
                 <ul className="menu menu-horizontal text-yellow-600 text-2xl font-medium px-1">
                 <li> <Link to={'/'}>Home</Link> </li>
                 <li> <Link to={'/blogs'}>Blogs</Link> </li>
-                <Link to={'/login'} className="btn bg-stone-500 hover:bg-stone-600 my-auto ml-10 border-0">Login</Link>
+                <Link to={'/login'} className=" bg-teal-600  hover:bg-teal-700 px-4 py-2 rounded-lg text-white font-medium text-center my-auto ml-10 border-0">Login</Link>
                 </ul>
             </div>
             <div className="navbar-end">

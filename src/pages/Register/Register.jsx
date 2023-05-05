@@ -31,15 +31,15 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                toast.success('Registration Completed Successfully!')
-                navigate('/')
-
-                
+                navigate('/')   
             })
             .catch(error => {
                 console.log(error);
                 setError(error.message);
             })
+            if (!error) {
+                toast.success('Registration Completed Successfully!')
+            }
     }
 
 
