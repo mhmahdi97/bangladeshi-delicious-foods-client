@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             {
                 path: '/chefs/:id',
                 element:<ChefRecipes></ChefRecipes>,
-                loader: ({params}) => fetch(`https://the-news-dragon-server-jhankarphero.vercel.app/categories/${params.id}`)
+                loader: ({params}) => fetch(`https://b7a10-chef-recipe-hunter-server-side-mhmahdi97.vercel.app/chef/${params.id}`)
             }
         ]
     }

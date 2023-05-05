@@ -16,7 +16,7 @@ const ChefCardsContainer = () => {
 
     return (
         <div>
-            <div className="mt-7">
+            <div className="mt-32">
                 <h1 className="text-5xl font-bold text-center mb-10">Meet Our Experienced Chef</h1>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-3 gap-4 lg:px-12 my-6'>
                 {
