@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
+import RecipeCard from './RecipeCard';
 
 const ChefRecipes = () => {
     // getting selected chef's data
@@ -17,41 +17,36 @@ const ChefRecipes = () => {
     const {id, chefPicture, chefName, experience, bio, likes, numberOfRecipes} = chefData;
     const { recipeName, ingredients, rating, cookingMethod, chefId} = recipes;
 
-    // favourite button handler
-    const [disabled, setDisabled] = useState(true);
-    const handleFavourite = () => {
-        toast('Added to Favourites!', {
-            icon: '❤️',
-        });
-        setDisabled(false);
-    }
+   
 
     return (
         <>
-            <Toaster
-                position="top-center"
-                reverseOrder={false}
-            />
-           <div className='mb-28'>
+           <div className='mb-20'>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col gap-4 lg:flex-row">
                         <img src={chefPicture} className="max-w-sm rounded-lg shadow-2xl" />
                         <div className='ml-10'>
                         <h1 className="text-5xl font-bold">{chefName}</h1>
                         <p className="py-6">{bio}</p>
-                        <p><span className='font-medium text-teal-950'>Experience</span>: {experience} years</p>
-                        <p><span className='font-medium text-teal-950'>Numbers of Recipes</span>: {numberOfRecipes}</p>
-                        <p className='mb-6'><span className='font-medium text-teal-950'>Likes</span>: {likes}</p>
-                        <button onClick={handleFavourite} disabled={!disabled} className="btn bg-red-900 ">Add to Favourite</button>
+                        <p><span className='font-medium text-teal-950'>Experience:</span> {experience} years</p>
+                        <p><span className='font-medium text-teal-950'>Numbers of Recipes:</span> {numberOfRecipes}</p>
+                        <p className='mb-6'><span className='font-medium text-teal-950'>Likes:</span>: {likes}</p>
+                        
                         </div>
                     </div>
                 </div>
            </div>
 
            <div>
+            <h1 className='text-center font-bold mb-16 text-4xl'>His Recipes:</h1>
+            
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-3 gap-4 lg:px-12 my-6'>
             {
-                
+                recipes.map(recipe => <RecipeCard
+                    recipe ={recipe}
+                ></RecipeCard>)
             }
+            </div>
            </div>
         </>
     );

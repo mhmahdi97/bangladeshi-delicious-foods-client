@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-        <footer className="footer py-4 px-10 bg-neutral text-stone-200">
+        <footer className="footer py-8 px-10 bg-neutral text-stone-200">
             <div>
                 <p>Bangladeshi Delicious Foods<br/>Copyright © 2023 - All rights reserved by Mahmud Hasan Mahdi </p>
             </div> 
